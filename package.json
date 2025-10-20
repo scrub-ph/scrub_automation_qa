@@ -1,0 +1,37 @@
+{
+  "name": "playwright-typescript-starter",
+  "version": "0.1.0",
+  "description": "Playwright + TypeScript starter with Page Object Model structure",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report",
+    "lint": "eslint \"{src,tests}/**/*.ts\"",
+    "format": "prettier --write \"**/*.{ts,js,json,md}\""
+  },
+  "keywords": [
+    "playwright",
+    "typescript",
+    "e2e",
+    "testing",
+    "pom"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^20.14.9",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-playwright": "^0.18.0",
+    "prettier": "^3.3.3",
+    "typescript": "~5.3.3"
+  },
+  "dependencies": {
+    "@types/pg": "^8.15.5",
+    "pg": "^8.16.3",
+    "playwright-typescript-starter": "file:"
+  }
+}
