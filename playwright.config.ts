@@ -8,10 +8,11 @@ export default defineConfig({
   workers: process.env.CI ? 2 : undefined,
   reporter: [['list'], ['html', { outputFolder: 'playwright-report', open: 'never' }]],
   use: {
-    baseURL: process.env.BASE_URL || 'http://localhost:5000', // Local SCRUB app
+    baseURL: process.env.BASE_URL || 'http://localhost:5000',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
-    video: 'retain-on-failure'
+    video: 'retain-on-failure',
+    headless: true
   },
   projects: [
     {
@@ -22,5 +23,7 @@ export default defineConfig({
       }
     },
   ],
-  outputDir: 'test-results'
+  outputDir: 'test-results',
+  // Global teardown to ensure browsers are closed
+  globalTeardown: require.resolve('./tests/global-teardown.ts')
 });

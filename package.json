@@ -6,6 +6,8 @@
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "test:report": "playwright show-report",
+    "test:clean": "playwright test && pkill -f chrome || true",
+    "clean:browsers": "pkill -f chrome || pkill -f chromium || true",
     "lint": "eslint \"{src,tests}/**/*.ts\"",
     "format": "prettier --write \"**/*.{ts,js,json,md}\""
   },
