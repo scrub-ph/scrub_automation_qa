@@ -12,8 +12,9 @@ test.describe('SCRUB Authentication Tests', () => {
     await loginPage.navigateToLoginPage();
   });
 
-  test.afterEach(async ({ page }) => {
+  test.afterEach(async ({ page, context }) => {
     await page.close();
+    await context.close();
   });
 
   // CLIENT LOGIN TESTS
