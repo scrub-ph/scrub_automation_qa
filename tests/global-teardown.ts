@@ -1,7 +1,7 @@
 import { chromium } from '@playwright/test';
 
 async function globalTeardown() {
-  console.log('🧹 Cleaning up: Closing all browser instances...');
+  console.log('Cleaning up: Closing all browser instances...');
   
   try {
     // Close any remaining browser instances
@@ -11,16 +11,16 @@ async function globalTeardown() {
     // Force close any lingering processes
     if (process.platform === 'linux' || process.platform === 'darwin') {
       const { exec } = require('child_process');
-      exec('pkill -f chrome', (error) => {
+      exec('pkill -f chrome', (error: Error | null) => {
         if (error && !error.message.includes('No such process')) {
           console.log('Note: Some browser processes may still be running');
         }
       });
     }
     
-    console.log('✅ Browser cleanup completed');
+    console.log('Browser cleanup completed');
   } catch (error) {
-    console.log('⚠️ Browser cleanup completed with warnings');
+    console.log('Browser cleanup completed with warnings');
   }
 }
 

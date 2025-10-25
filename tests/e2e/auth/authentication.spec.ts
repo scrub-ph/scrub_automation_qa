@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
-import { LoginPage } from '../../src/pages/LoginPage';
-import { DashBoardPage } from '../../src/pages/DashBoardPage';
+import { LoginPage } from '../../../src/pages/LoginPage';
+import { DashBoardPage } from '../../../src/pages/DashBoardPage';
 
 test.describe('SCRUB Authentication Tests', () => {
   let loginPage: LoginPage;

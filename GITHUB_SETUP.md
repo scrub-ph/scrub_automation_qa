@@ -1,16 +1,16 @@
 # GitHub Repository Setup Instructions
 
-## 🚀 Steps to Create Repository
+## Steps to Create Repository
 
-1. **Go to GitHub**: https://github.com/organizations/scrub-ph/repositories/new
+1. Go to GitHub: https://github.com/organizations/scrub-ph/repositories/new
 
-2. **Repository Settings**:
-   - **Repository name**: `scrub-playwright-tests`
-   - **Description**: `End-to-end testing framework for SCRUB cleaning services platform`
-   - **Visibility**: Private (recommended) or Public
-   - **Initialize**: Don't initialize with README (we already have one)
+2. Repository Settings:
+   - Repository name: `scrub-playwright-tests`
+   - Description: `End-to-end testing framework for SCRUB cleaning services platform`
+   - Visibility: Private (recommended) or Public
+   - Initialize: Don't initialize with README (we already have one)
 
-3. **After creating the repository, run these commands**:
+3. After creating the repository, run these commands:
 
 ```bash
 cd /home/joshuavince/playwright-demo/playwright-typescript-framework
@@ -23,14 +23,14 @@ git branch -M main
 git push -u origin main
 ```
 
-## 📋 Repository Details
+## Repository Details
 
-- **Framework**: Playwright + TypeScript
-- **Tests**: Login, Database Integration, TypeScript Examples
-- **Features**: Page Object Model, Database Helper, Screenshot Capture
-- **Target**: SCRUB cleaning services platform
+- Framework: Playwright + TypeScript
+- Tests: Login, Database Integration, TypeScript Examples
+- Features: Page Object Model, Database Helper, Screenshot Capture
+- Target: SCRUB cleaning services platform
 
-## 🔧 Team Setup
+## Team Setup
 
 After pushing, team members can clone:
 

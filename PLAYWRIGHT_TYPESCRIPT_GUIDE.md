@@ -1,9 +1,9 @@
 # Playwright with TypeScript - Complete Implementation Guide
 
-## 🎭 What is Playwright?
+## What is Playwright?
 Playwright is a modern end-to-end testing framework that allows you to test web applications across different browsers (Chrome, Firefox, Safari) with a single API.
 
-## 📁 Project Structure
+## Project Structure
 ```
 playwright-typescript-framework/
 ├── src/
@@ -17,7 +17,7 @@ playwright-typescript-framework/
 └── package.json        # Dependencies and scripts
 ```
 
-## 🔧 Core Concepts
+## Core Concepts
 
 ### 1. Page Object Model (POM)
 Separates test logic from page interactions. Each page has its own class with methods and locators.

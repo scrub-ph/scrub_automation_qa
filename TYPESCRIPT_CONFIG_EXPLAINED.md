@@ -1,6 +1,6 @@
 # TypeScript Configuration in Playwright - Detailed Explanation
 
-## 📋 tsconfig.json Breakdown
+## tsconfig.json Breakdown
 
 ```json
 {
@@ -24,8 +24,8 @@
     }
   },
   "include": [                   // Files to include
-    "src/**/*",
-    "tests/**/*"
+    "src//*",
+    "tests//*"
   ],
   "exclude": [                   // Files to exclude
     "node_modules",
@@ -35,9 +35,9 @@
 }
 ```
 
-## 🎯 Key TypeScript Features Used
+## Key TypeScript Features Used
 
-### 1. **Interfaces**
+### 1. Interfaces
 ```typescript
 interface LoginCredentials {
   email: string;
@@ -48,7 +48,7 @@ interface LoginCredentials {
 - Provide type safety
 - Enable IntelliSense
 
-### 2. **Types**
+### 2. Types
 ```typescript
 type UserRole = 'client' | 'cleaner' | 'admin';
 ```
@@ -56,7 +56,7 @@ type UserRole = 'client' | 'cleaner' | 'admin';
 - Union types for multiple options
 - Type aliases for complex types
 
-### 3. **Generics**
+### 3. Generics
 ```typescript
 async function getData<T>(id: string): Promise<T> {
   // Generic function that returns type T
@@ -65,23 +65,23 @@ async function getData<T>(id: string): Promise<T> {
 - Reusable code with different types
 - Type safety with flexibility
 
-### 4. **Optional Parameters**
+### 4. Optional Parameters
 ```typescript
 async function login(email: string, password: string, remember?: boolean) {
   // remember is optional (can be undefined)
 }
 ```
 
-### 5. **Async/Await with Types**
+### 5. Async/Await with Types
 ```typescript
 async function getUser(): Promise<User | null> {
   // Returns Promise that resolves to User or null
 }
 ```
 
-## 🔧 Playwright-Specific TypeScript Features
+## Playwright-Specific TypeScript Features
 
-### 1. **Page Object Typing**
+### 1. Page Object Typing
 ```typescript
 import { Page, Locator } from '@playwright/test';
 
@@ -96,7 +96,7 @@ class LoginPage {
 }
 ```
 
-### 2. **Test Function Typing**
+### 2. Test Function Typing
 ```typescript
 test('login test', async ({ page }: { page: Page }): Promise<void> => {
   // page parameter is typed as Page
@@ -104,37 +104,37 @@ test('login test', async ({ page }: { page: Page }): Promise<void> => {
 });
 ```
 
-### 3. **Assertion Typing**
+### 3. Assertion Typing
 ```typescript
 await expect(page.locator('button')).toBeVisible();
 // TypeScript knows this returns Promise<void>
 ```
 
-## 🚀 Benefits of TypeScript in Playwright
+## Benefits of TypeScript in Playwright
 
-### 1. **Type Safety**
+### 1. Type Safety
 - Catch errors at compile time
 - Prevent runtime errors
 - Better code reliability
 
-### 2. **IntelliSense**
+### 2. IntelliSense
 - Auto-completion
 - Method suggestions
 - Parameter hints
 
-### 3. **Refactoring**
+### 3. Refactoring
 - Safe renaming
 - Find all references
 - Automatic imports
 
-### 4. **Documentation**
+### 4. Documentation
 - Self-documenting code
 - Clear parameter types
 - Return type information
 
-## 🎭 Playwright + TypeScript Best Practices
+## Playwright + TypeScript Best Practices
 
-### 1. **Use Interfaces for Test Data**
+### 1. Use Interfaces for Test Data
 ```typescript
 interface TestUser {
   email: string;
@@ -147,7 +147,7 @@ const testUsers: TestUser[] = [
 ];
 ```
 
-### 2. **Type Page Object Methods**
+### 2. Type Page Object Methods
 ```typescript
 class LoginPage {
   async performLogin(credentials: LoginCredentials): Promise<void> {
@@ -160,7 +160,7 @@ class LoginPage {
 }
 ```
 
-### 3. **Use Enums for Constants**
+### 3. Use Enums for Constants
 ```typescript
 enum UserRoles {
   CLIENT = 'client',
@@ -169,7 +169,7 @@ enum UserRoles {
 }
 ```
 
-### 4. **Error Handling with Types**
+### 4. Error Handling with Types
 ```typescript
 try {
   await page.goto('/login');
@@ -180,10 +180,10 @@ try {
 }
 ```
 
-## 📚 Learning Path
+## Learning Path
 
-1. **Basic TypeScript** - Learn interfaces, types, classes
-2. **Async/Await** - Understand Promises and async patterns
-3. **Playwright API** - Learn Page, Locator, test functions
-4. **Page Object Model** - Structure your tests properly
-5. **Advanced Features** - Generics, utility types, decorators
+1. Basic TypeScript - Learn interfaces, types, classes
+2. Async/Await - Understand Promises and async patterns
+3. Playwright API - Learn Page, Locator, test functions
+4. Page Object Model - Structure your tests properly
+5. Advanced Features - Generics, utility types, decorators

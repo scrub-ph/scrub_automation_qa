@@ -8,11 +8,13 @@ export default defineConfig({
   workers: process.env.CI ? 2 : undefined,
   reporter: [['list'], ['html', { outputFolder: 'playwright-report', open: 'never' }]],
   use: {
-    baseURL: process.env.BASE_URL || 'http://localhost:5000',
+    baseURL: 'https://scrub-sync-mickymac19.replit.app',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    headless: true
+    headless: true,
+    permissions: ['geolocation'],
+    geolocation: { latitude: 14.5995, longitude: 120.9842 }
   },
   projects: [
     {

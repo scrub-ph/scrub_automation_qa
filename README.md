@@ -1,6 +1,30 @@
-# SCRUB Playwright Testing Framework
+# SCRUB Automation QA
 
-End-to-end testing framework for SCRUB cleaning services platform using Playwright and TypeScript.
+Comprehensive E2E test suite for the SCRUB cleaning service application.
+
+## 🏗️ Test Organization
+
+### 📁 **tests/e2e/pages/** - Public Pages (✅ Working)
+- Homepage functionality and navigation
+- Service information pages
+- Button interactions and routing
+
+### 📁 **tests/e2e/registration/** - Account Creation (✅ Working)
+- Client registration (complete 5-step flow)
+- Cleaner registration (complete 6-step flow)
+- Form validation and success verification
+
+### 📁 **tests/e2e/auth/** - Authentication (⚠️ Partial)
+- Login functionality (has known issues)
+- User authentication flows
+
+### 📁 **tests/e2e/booking/** - Service Booking (⚠️ Partial)
+- Booking flow navigation
+- Service selection and pricing
+
+### 📁 **tests/e2e/dashboard/** - User Dashboards (❌ Blocked)
+- Role-based dashboard functionality
+- Requires working authentication
 
 ## 🚀 Quick Start
 
@@ -8,93 +32,53 @@ End-to-end testing framework for SCRUB cleaning services platform using Playwrig
 # Install dependencies
 npm install
 
-# Install Playwright browsers
-npx playwright install
+# Run working tests only
+./run-tests.sh working
 
-# Run tests
-npm run test
+# Run specific test suite
+./run-tests.sh pages
+./run-tests.sh registration
 
-# Run tests with browser visible
-npm run test:headed
-
-# View test report
-npm run test:report
+# Run all tests
+./run-tests.sh
 ```
 
-## 📁 Project Structure
+## 📊 Test Status
 
-```
-├── src/
-│   ├── pages/          # Page Object Model classes
-│   ├── utils/          # Helper utilities
-│   └── types/          # TypeScript type definitions
-├── tests/
-│   ├── e2e/           # End-to-end test files
-│   └── fixtures/      # Test data and fixtures
-├── test-results/      # Test execution results
-└── playwright-report/ # HTML test reports
-```
+### ✅ **Fully Working (18 tests)**
+- **Homepage Tests**: 9 tests - Navigation, buttons, page elements
+- **Service Pages**: 6 tests - Page loading and navigation
+- **Account Creation**: 3 tests - Client & cleaner registration
 
-## 🧪 Test Suites
+### ⚠️ **Partially Working**
+- **Authentication**: Login fails due to routing issues (SCRUB-001, SCRUB-002)
+- **Booking Flow**: Pages exist but may require authentication
 
-- **Login Tests** - Client and cleaner authentication
-- **Database Integration** - User management with PostgreSQL
-- **TypeScript Examples** - Learning and demonstration tests
+### ❌ **Known Issues**
+- **SCRUB-001**: Login failure after registration
+- **SCRUB-002**: No redirect to role-specific dashboards
+- Dashboard tests blocked by authentication issues
 
-## 🔧 Configuration
+## 🛠️ Configuration
 
-- **Base URL**: `http://localhost:5000` (SCRUB app)
-- **Browser**: Chrome
-- **TypeScript**: Full type safety
-- **Database**: PostgreSQL integration
+- **Base URL**: `https://scrub-sync-mickymac19.replit.app`
+- **Browser**: Chrome (headless)
+- **Test Framework**: Playwright with TypeScript
+- **Page Objects**: Located in `src/pages/`
 
-## 📊 Features
+## 📝 Bug Reports
 
-- ✅ Page Object Model pattern
-- ✅ TypeScript support
-- ✅ Database integration
-- ✅ Screenshot capture
-- ✅ Video recording on failure
-- ✅ HTML reporting
-- ✅ Parallel test execution
+Bug reports are automatically generated in `bug-reports/` directory:
+- `login-failure-bug-001.md` - Authentication issues
+- `routes-issue-bug-002.md` - Dashboard routing problems
 
-## 🛠️ Environment Setup
+## 🎯 Test Coverage
 
-Create `.env` file:
-```bash
-USERNAME=your-test-email@example.com
-PASSWORD=your-test-password
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=scrub_db
-DB_USER=scrub_user
-DB_PASSWORD=scrub_password
-```
+- ✅ User registration flows
+- ✅ Public page navigation
+- ✅ Form validation
+- ⚠️ Authentication (partial)
+- ⚠️ Booking flows (partial)
+- ❌ Dashboard functionality (blocked)
 
-## 📝 Writing Tests
-
-```typescript
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../src/pages/LoginPage';
-
-test('user login', async ({ page }) => {
-  const loginPage = new LoginPage(page);
-  await loginPage.navigateToLoginPage();
-  await loginPage.performLogin('user@example.com', 'password');
-  await loginPage.verifySuccessfulLogin();
-});
-```
-
-## 🏃‍♂️ Available Scripts
-
-- `npm run test` - Run all tests
-- `npm run test:headed` - Run tests with browser UI
-- `npm run test:report` - Show HTML report
-- `npm run lint` - Run ESLint
-- `npm run format` - Format code with Prettier
-
-## 🔗 Related
-
-- [SCRUB Application](https://github.com/scrub-ph/scrub)
-- [Playwright Documentation](https://playwright.dev/)
-- [TypeScript Documentation](https://www.typescriptlang.org/)
+Run `./run-tests.sh working` to execute only the fully functional test suites.

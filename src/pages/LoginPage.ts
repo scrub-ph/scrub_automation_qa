@@ -36,7 +36,7 @@ export class LoginPage {
 
   // Navigation
   async navigateToLoginPage(): Promise<void> {
-    console.log('🔄 Navigating to login page...');
+    console.log('Navigating to login page...');
     await this.page.goto('/sign-in');
     await this.waitForPageLoad();
   }
@@ -50,21 +50,21 @@ export class LoginPage {
 
   // Actions
   async enterEmailAddress(email: string): Promise<void> {
-    console.log(`📧 Entering email: ${email}`);
+    console.log(`Entering email: ${email}`);
     await this.emailInput.clear();
     await this.emailInput.fill(email);
     await expect(this.emailInput).toHaveValue(email);
   }
 
   async enterPassword(password: string): Promise<void> {
-    console.log('🔐 Entering password...');
+    console.log('Entering password...');
     await this.passwordInput.clear();
     await this.passwordInput.fill(password);
     await expect(this.passwordInput).toHaveValue(password);
   }
 
   async clickSignInButton(): Promise<void> {
-    console.log('🖱️ Clicking sign in button...');
+    console.log('Clicking sign in button...');
     await this.signInButton.click();
     
     // Wait for either success redirect or error message
@@ -72,7 +72,7 @@ export class LoginPage {
       this.page.waitForURL(/dashboard|home|profile/, { timeout: 5000 }),
       this.errorMessage.waitFor({ state: 'visible', timeout: 5000 })
     ]).catch(() => {
-      console.log('⚠️ Login response timeout');
+      console.log('Login response timeout');
     });
   }
 
@@ -80,11 +80,11 @@ export class LoginPage {
   async performLogin(credentials: LoginCredentials): Promise<void>;
   async performLogin(emailOrCredentials: string | LoginCredentials, password?: string): Promise<void> {
     if (typeof emailOrCredentials === 'string') {
-      console.log(`🚀 Performing login for: ${emailOrCredentials}`);
+      console.log(`Performing login for: ${emailOrCredentials}`);
       await this.enterEmailAddress(emailOrCredentials);
       await this.enterPassword(password!);
     } else {
-      console.log(`🚀 Performing login for: ${emailOrCredentials.email}`);
+      console.log(`Performing login for: ${emailOrCredentials.email}`);
       await this.enterEmailAddress(emailOrCredentials.email);
       await this.enterPassword(emailOrCredentials.password);
     }
@@ -99,20 +99,20 @@ export class LoginPage {
   }
 
   async verifySuccessfulLoginRedirect(): Promise<void> {
-    console.log('✅ Verifying successful login...');
+    console.log('Verifying successful login...');
     await expect(this.page).toHaveURL(/dashboard|home|profile/);
     await expect(this.page).not.toHaveURL(/sign-in|login/);
-    console.log('✅ Login successful!');
+    console.log('Login successful!');
   }
 
   async verifyErrorMessageIsDisplayed(expectedMessage?: string): Promise<void> {
-    console.log('❌ Verifying login failed...');
+    console.log('Verifying login failed...');
     await expect(this.errorMessage).toBeVisible();
     if (expectedMessage) {
       await expect(this.errorMessage).toContainText(expectedMessage);
     }
     await expect(this.page).toHaveURL(/sign-in|login/);
-    console.log('❌ Login failed as expected');
+    console.log('Login failed as expected');
   }
 
   async verifySuccessfulLogin(): Promise<void> {
